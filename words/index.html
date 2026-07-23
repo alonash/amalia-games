@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>מגלים מילים – Amalia Kids Games</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;900&family=Suez+One&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../shared.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="bubbles" id="bubbles" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <a class="back-link" href="../index.html">→ חזרה למשחקים</a>
+      <h1 class="game-title">🗣️ מגלים מילים</h1>
+      <button class="btn btn--ghost btn--small" id="restart">התחלה מחדש</button>
+    </header>
+
+    <main class="wrap">
+      <p class="speech intro">גררו כל מילה אל התמונה שלה – או פשוט לחצו על מילה ואז על תמונה 🌈</p>
+
+      <section class="stats" aria-label="נתוני משחק">
+        <div class="stat">
+          <span class="stat__label">ניקוד</span>
+          <span class="stat__value" id="score">0</span>
+        </div>
+        <div class="stat">
+          <span class="stat__label">שלב</span>
+          <span class="stat__value" id="level">1</span>
+        </div>
+        <div class="stat">
+          <span class="stat__label">התאמות</span>
+          <span class="stat__value" id="found">0/4</span>
+        </div>
+      </section>
+
+      <section class="slots" id="slots" aria-label="תמונות"></section>
+      <section class="words" id="words" aria-label="מילים לגרירה"></section>
+    </main>
+
+    <div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="end-title">
+      <div class="overlay__card">
+        <span class="overlay__emoji">🧩</span>
+        <h2 class="overlay__title" id="end-title">אלוף המילים!</h2>
+        <p class="overlay__text">השלמת את כל ההתאמות!</p>
+        <div class="overlay__stars" id="stars">⭐ ⭐ ⭐ ⭐ ⭐</div>
+        <p class="overlay__text" id="final"></p>
+        <div class="overlay__actions">
+          <button class="btn btn--mint" id="again">שחק שוב</button>
+          <a class="btn btn--ghost" href="../index.html">חזרה למשחקים</a>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

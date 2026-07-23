@@ -1,0 +1,192 @@
+/* ===== פיצוץ של כיף ===== */
+
+.btn--small {
+  font-size: 0.95rem;
+  padding: 11px 22px;
+}
+
+.wrap--game {
+  padding-bottom: 30px;
+}
+
+.stat--timer .stat__value {
+  font-size: 2.2rem;
+  color: var(--ink);
+}
+
+.stat--timer.is-urgent .stat__value {
+  color: #d9748a;
+  animation: pulse 0.9s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.12);
+  }
+}
+
+/* זירת המשחק */
+.arena {
+  position: relative;
+  height: min(66vh, 560px);
+  min-height: 380px;
+  border-radius: var(--radius-xl);
+  background: linear-gradient(180deg, #ffffff 0%, #fdf3e6 100%);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+  touch-action: manipulation;
+}
+
+/* מסך פתיחה בתוך הזירה */
+.start {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  text-align: center;
+  padding: 24px;
+  z-index: 5;
+}
+
+.start.is-hidden {
+  display: none;
+}
+
+.start__emoji {
+  font-size: 3rem;
+}
+
+.start__title {
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+}
+
+.start__text {
+  color: var(--ink-soft);
+  line-height: 1.7;
+  margin: 4px 0 18px;
+}
+
+/* בלון – צבע הבסיס נקבע מה-JS (ראו script.js), כאן רק גיבוי */
+.balloon {
+  position: absolute;
+  bottom: -140px;
+  width: 62px;
+  height: 76px;
+  background-color: #f6a8bb;
+  border-radius: 50% 50% 48% 48% / 55% 55% 45% 45%;
+  cursor: pointer;
+  will-change: transform;
+  animation-name: rise;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  border: none;
+  padding: 0;
+}
+
+/* חוט */
+.balloon::after {
+  content: "";
+  position: absolute;
+  bottom: -22px;
+  left: 50%;
+  width: 2px;
+  height: 24px;
+  background: rgba(75, 66, 87, 0.28);
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+/* הנצנוץ מגיע מגרדיאנט שנקבע ב-script.js */
+
+/* הבדל בין סוגי הבלונים: גודל וסימן, לא צבע */
+.balloon--fast {
+  width: 54px;
+  height: 66px;
+}
+
+.balloon--bonus {
+  width: 50px;
+  height: 62px;
+  box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.85),
+    0 0 0 10px rgba(232, 180, 92, 0.38);
+}
+
+.balloon:hover {
+  filter: brightness(1.06);
+}
+
+@keyframes rise {
+  0% {
+    transform: translateY(0) rotate(-3deg);
+  }
+  50% {
+    transform: translateY(calc(var(--travel, 700px) * -0.5)) rotate(3deg);
+  }
+  100% {
+    transform: translateY(calc(var(--travel, 700px) * -1)) rotate(-2deg);
+  }
+}
+
+/* חלקיקי פיצוץ */
+.particle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: burst 0.55s ease-out forwards;
+}
+
+@keyframes burst {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--dx), var(--dy)) scale(0.2);
+    opacity: 0;
+  }
+}
+
+/* נקודות מרחפות */
+.floating-score {
+  position: absolute;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--ink);
+  pointer-events: none;
+  animation: floatScore 0.8s var(--ease-soft) forwards;
+}
+
+@keyframes floatScore {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-52px);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .arena {
+    height: min(60vh, 460px);
+  }
+  .balloon {
+    width: 56px;
+    height: 70px;
+  }
+}

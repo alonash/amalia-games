@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>פיצוץ של כיף – Amalia Kids Games</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;900&family=Suez+One&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../shared.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="bubbles" id="bubbles" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <a class="back-link" href="../index.html">→ חזרה למשחקים</a>
+      <h1 class="game-title">🎈 פיצוץ של כיף</h1>
+      <button class="btn btn--ghost btn--small" id="sound" aria-pressed="true">
+        🔊 צליל
+      </button>
+    </header>
+
+    <main class="wrap wrap--game">
+      <section class="stats" aria-label="נתוני משחק">
+        <div class="stat">
+          <span class="stat__label">ניקוד</span>
+          <span class="stat__value" id="score">0</span>
+        </div>
+        <div class="stat stat--timer">
+          <span class="stat__label">זמן</span>
+          <span class="stat__value" id="timer">30</span>
+        </div>
+      </section>
+
+      <div class="arena" id="arena">
+        <!-- מסך פתיחה -->
+        <div class="start" id="start">
+          <span class="start__emoji">🎈</span>
+          <h2 class="start__title">מוכנים?</h2>
+          <p class="start__text">
+            30 שניות לפוצץ כמה שיותר בלונים.<br />
+            בלון עם ⚡ = 20 נקודות · בלון עם ⭐ = 50 נקודות!
+          </p>
+          <button class="btn btn--sky" id="begin">מתחילים</button>
+        </div>
+      </div>
+    </main>
+
+    <div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="end-title">
+      <div class="overlay__card">
+        <span class="overlay__emoji">🎈</span>
+        <h2 class="overlay__title" id="end-title">הזמן נגמר!</h2>
+        <p class="overlay__text" id="final">צברת 0 נקודות!</p>
+        <div class="overlay__stars" id="stars">⭐ ⭐ ⭐</div>
+        <div class="overlay__actions">
+          <button class="btn btn--sky" id="again">שחק שוב</button>
+          <a class="btn btn--ghost" href="../index.html">חזרה למשחקים</a>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

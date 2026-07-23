@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>אלופי הזיכרון – Amalia Kids Games</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;900&family=Suez+One&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../shared.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="bubbles" id="bubbles" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <a class="back-link" href="../index.html">→ חזרה למשחקים</a>
+      <h1 class="game-title">🧠 אלופי הזיכרון</h1>
+      <button class="btn btn--ghost btn--small" id="restart">משחק חדש</button>
+    </header>
+
+    <main class="wrap">
+      <p class="speech intro">מצאו את כל שמונת הזוגות – קחו את הזמן שלכם 🌼</p>
+
+      <section class="stats" aria-label="נתוני משחק">
+        <div class="stat">
+          <span class="stat__label">ניקוד</span>
+          <span class="stat__value" id="score">0</span>
+        </div>
+        <div class="stat">
+          <span class="stat__label">ניסיונות</span>
+          <span class="stat__value" id="tries">0</span>
+        </div>
+        <div class="stat">
+          <span class="stat__label">זמן</span>
+          <span class="stat__value" id="timer">0:00</span>
+        </div>
+      </section>
+
+      <div class="board" id="board" role="grid" aria-label="לוח קלפים"></div>
+    </main>
+
+    <div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="win-title">
+      <div class="overlay__card">
+        <span class="overlay__emoji">🎉</span>
+        <h2 class="overlay__title" id="win-title">כל הכבוד!</h2>
+        <p class="overlay__text">מצאת את כל הזוגות!</p>
+        <div class="overlay__stars" id="stars">⭐ ⭐ ⭐ ⭐ ⭐</div>
+        <p class="overlay__text" id="summary"></p>
+        <div class="overlay__actions">
+          <button class="btn btn--pink" id="again">שחק שוב</button>
+          <a class="btn btn--ghost" href="../index.html">חזרה למשחקים</a>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
