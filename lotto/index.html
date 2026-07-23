@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>לוטו השי"ן – Amalia Kids Games</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;900&family=Suez+One&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../shared.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="bubbles" id="bubbles" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <a class="back-link" href="../index.html">→ חזרה למשחקים</a>
+      <h1 class="game-title">🤡 לוטו השי"ן</h1>
+      <div class="topbar__tools">
+        <button class="btn btn--ghost btn--small" id="voice" aria-pressed="true">
+          🔊 הקראה
+        </button>
+        <button class="btn btn--ghost btn--small" id="restart">התחלה מחדש</button>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <p class="speech intro">
+        אמרו את המילה בקול — ואז הניחו את הקלף על התמונה הזהה בשורה הנכונה 🌟
+      </p>
+
+      <section class="stats" aria-label="נתוני משחק">
+        <div class="stat">
+          <span class="stat__label">ניקוד</span>
+          <span class="stat__value" id="score">0</span>
+        </div>
+        <div class="stat">
+          <span class="stat__label">הונחו</span>
+          <span class="stat__value" id="placed">0/15</span>
+        </div>
+      </section>
+
+      <!-- לוח הלוטו – שורה לכל מיקום של האות ש׳ -->
+      <section class="board" id="board" aria-label="לוח הלוטו"></section>
+    </main>
+
+    <!-- הקופה -->
+    <div class="pot" id="pot">
+      <span class="pot__label">הקופה</span>
+      <div class="pot__cards" id="potCards" aria-label="קלפים לגרירה"></div>
+    </div>
+
+    <!-- שלומי הליצן -->
+    <div class="shlomi" id="shlomi" aria-hidden="true">
+      <svg viewBox="0 0 120 130" width="120" height="130">
+        <!-- ידיים -->
+        <g class="shlomi__hand shlomi__hand--right">
+          <circle cx="26" cy="100" r="11" fill="#ffffff" stroke="#e0d8ea" stroke-width="2" />
+        </g>
+        <g class="shlomi__hand shlomi__hand--left">
+          <circle cx="94" cy="100" r="11" fill="#ffffff" stroke="#e0d8ea" stroke-width="2" />
+        </g>
+        <!-- שיער -->
+        <circle cx="24" cy="46" r="15" fill="#f291a9" />
+        <circle cx="96" cy="46" r="15" fill="#7ec6e0" />
+        <circle cx="31" cy="28" r="12" fill="#f3c163" />
+        <circle cx="89" cy="28" r="12" fill="#7fcfa4" />
+        <!-- כובע -->
+        <path d="M40 32 L80 32 L60 5 Z" fill="#bda7e8" />
+        <circle cx="60" cy="6" r="6" fill="#f291a9" />
+        <!-- פנים -->
+        <circle cx="60" cy="58" r="30" fill="#ffe6d5" />
+        <circle cx="50" cy="53" r="3.6" fill="#4b4257" />
+        <circle cx="70" cy="53" r="3.6" fill="#4b4257" />
+        <circle cx="43" cy="66" r="5.5" fill="#f9b8c4" />
+        <circle cx="77" cy="66" r="5.5" fill="#f9b8c4" />
+        <path d="M47 71 Q60 88 73 71 Z" fill="#d1495b" />
+        <circle cx="60" cy="63" r="7.5" fill="#ef5f5f" />
+        <!-- צווארון וגוף -->
+        <ellipse cx="60" cy="92" rx="27" ry="8" fill="#f3c163" />
+        <path d="M46 96 h28 a10 10 0 0 1 10 10 v18 h-48 v-18 a10 10 0 0 1 10 -10 z" fill="#7ec6e0" />
+        <circle cx="60" cy="108" r="4" fill="#fff7ec" />
+        <circle cx="60" cy="119" r="4" fill="#fff7ec" />
+      </svg>
+      <span class="shlomi__cheer" id="cheer">כל הכבוד!</span>
+    </div>
+
+    <div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="end-title">
+      <div class="overlay__card">
+        <span class="overlay__emoji">🤡</span>
+        <h2 class="overlay__title" id="end-title">אלופי השי"ן!</h2>
+        <p class="overlay__text">מילאתם את כל הלוח — שלומי גאה בכם!</p>
+        <div class="overlay__stars" id="stars">⭐ ⭐ ⭐ ⭐ ⭐</div>
+        <p class="overlay__text" id="final"></p>
+        <div class="overlay__actions">
+          <button class="btn btn--pink" id="again">שחק שוב</button>
+          <a class="btn btn--ghost" href="../index.html">חזרה למשחקים</a>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
