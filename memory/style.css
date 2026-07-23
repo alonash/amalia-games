@@ -1,0 +1,139 @@
+/* ===== אלופי הזיכרון ===== */
+
+.btn--small {
+  font-size: 0.95rem;
+  padding: 11px 22px;
+}
+
+.intro {
+  display: block;
+  width: fit-content;
+  margin: 22px auto 0;
+  text-align: center;
+  color: var(--ink-soft);
+}
+
+/* לוח 4x4 – גובה השורות נקבע במפורש כדי שהקלפים תמיד ייראו */
+.board {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: clamp(88px, 21vw, 124px);
+  gap: 14px;
+  width: min(520px, 100%);
+  margin: 0 auto;
+}
+
+.card-slot {
+  position: relative;
+  height: 100%;
+  perspective: 900px;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  transition: transform 0.5s var(--ease-soft, cubic-bezier(0.22, 1, 0.36, 1));
+  border-radius: var(--radius-md, 18px);
+}
+
+.card-slot.is-flipped .card-inner,
+.card-slot.is-matched .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: var(--radius-md, 18px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 12px 26px rgba(75, 66, 87, 0.1);
+}
+
+/* גב הקלף */
+.card-face--back {
+  background-color: #bee3f2;
+  background-image: linear-gradient(160deg, #bee3f2 0%, #f6c3ce 100%);
+  /* גיבוי אם השכבה השלישית של הפנים לא נתמכת */
+  opacity: 1;
+  transition: opacity 0s linear 0.25s;
+}
+
+.card-slot.is-flipped .card-face--back,
+.card-slot.is-matched .card-face--back {
+  opacity: 0;
+}
+
+.card-face--back::after {
+  content: "";
+  width: 42%;
+  height: 42%;
+  border-radius: 60% 60% 55% 55% / 60% 60% 50% 50%;
+  background: rgba(255, 255, 255, 0.65);
+}
+
+/* פנים הקלף */
+.card-face--front {
+  background: #ffffff;
+  transform: rotateY(180deg);
+  font-size: clamp(1.9rem, 7vw, 2.7rem);
+}
+
+.card-slot:not(.is-flipped):not(.is-matched):hover .card-inner {
+  transform: scale(1.04);
+}
+
+.card-slot.is-matched {
+  cursor: default;
+  animation: matchPop 0.5s var(--ease-soft, ease);
+}
+
+.card-slot.is-matched .card-face--front {
+  background: #bce7ce;
+}
+
+.card-slot.is-wrong .card-inner {
+  animation: wiggle 0.4s ease;
+}
+
+@keyframes matchPop {
+  0% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(1.09);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes wiggle {
+  0%,
+  100% {
+    margin-inline-start: 0;
+  }
+  25% {
+    margin-inline-start: -6px;
+  }
+  75% {
+    margin-inline-start: 6px;
+  }
+}
+
+@media (max-width: 420px) {
+  .board {
+    gap: 10px;
+  }
+}
